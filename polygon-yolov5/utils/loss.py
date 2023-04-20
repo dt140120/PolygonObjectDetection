@@ -382,7 +382,7 @@ class Polygon_ComputeLoss:
             # tbox represents the relative positions from xyxyxyxy to center (in grid)
             t[:, 2:10] = order_corners(t[:, 2:10])
             a = t[:, 10].long()  # anchor indices
-            indices.append((b, a, gj.clamp_(0, gain[3] - 1), gi.clamp_(0, gain[2] - 1)))  # image, anchor, grid indices
+            indices.append((b, a, gj.clamp_(0, int(gain[3] - 1)), gi.clamp_(0, int(gain[2] - 1))))  # image, anchor, grid indices
             
             # same corners, different center points, different relative positions
             tbox.append(t[:, 2:10]-gij.repeat(1, 4))  # polygon box
